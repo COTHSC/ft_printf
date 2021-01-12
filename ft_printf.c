@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
-//#include "libft/libft.h"
+#include <stdarg.h>
+#include "libft/libft.h"
 struct	fandf
 {
 	char *flags;
@@ -8,15 +9,7 @@ struct	fandf
 	char type;
 };
 
-size_t	ft_strlen(const char *s)
-{
-	int i;
 
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
-}
 
 int	isflag(char c)
 {
@@ -25,11 +18,13 @@ int	isflag(char c)
 	else return 0;
 }
 
-int	ft_isdigit(char c)
+int	ft_putstr(char *str)
 {
-	if (c >= '0' && c <='9')
-		return 1;
-	else return 0;
+	int size;
+
+	size = ft_strlen(str);
+	write(1, str, size);
+	return 1;
 }
 
 int	ft_istype(char c)
@@ -50,22 +45,6 @@ struct fandf innit_struct()
 	return info;
 }
 
-int		ft_atoi(char *str)
-{
-	int i;
-	int result;
-
-	result = 0;
-	i = 0;
-	while (ft_isdigit(str[i]))
-	{
-		result = result * 10 + (str[i] - '0');
-		i++;
-	}
-	return (result);
-}
-
-char	*ft_convert(
 
 char	*ft_appendchar(char const *s1, char const s2)
 {
@@ -98,7 +77,7 @@ char	*ft_appendchar(char const *s1, char const s2)
 	return (retstr);
 }
 
-struct fandf	*fill(char *str, struct fandf *info)
+struct fandf	*fill(const char *str, struct fandf *info)
 {
 	int i = 0;
 
@@ -121,19 +100,34 @@ struct fandf	*fill(char *str, struct fandf *info)
 	return (info);
 }
 
+int	ft_convertme(va_list ap, struct fandf *info)
+{
+	if (info->type == 'i')
+		ft_putstr(ft_itoa(va_arg(ap, int)));
+	return 1;
+}
 
+
+int ft_printf(const char *formatstring, ...)
+{
+	va_list	ap;
+	struct fandf *info;
+
+	*info = innit_struct();
+	va_start(ap, formatstring);
+	info = fill(formatstring, info);
+	ft_convertme(ap, info);
+
+	return 0;
+}
 
 
 
 int main()
 {
-	char *strtoparse = "%--10i";
-	struct fandf info;
-
-	info = innit_struct();
-
-	fill(strtoparse, &info);
-
+	int i = 100;
 	
+	ft_printf("%-177i", i); 
+
 	return 0;
 }
