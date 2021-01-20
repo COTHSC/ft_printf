@@ -10,13 +10,17 @@ struct	fandf
 	int lenflags;
 };
 
-void innit_struct(struct fandf *info)
+struct fandf *innit_struct()
 {
+	struct fandf *info;
+
+	info = malloc(sizeof(*info));
 
 	info->flags = NULL ;
 	info->width = 0;
 	info->type = 0;
 	info->lenflags = 0;
+	return info;
 
 }
 
@@ -111,7 +115,7 @@ int ft_printf(const char *formatstring, ...)
 			ft_putchar(formatstring[i++]);
 		else
 		{
-			innit_struct(info);
+			info = innit_struct();
 			fill(&formatstring[i], info);
 			ft_convertme(ap, info);
 			i = i + info->lenflags;
@@ -125,10 +129,13 @@ int main()
 	int i = 1000;
 	int unautrei = 2000;
 	int encoreunautrei = 30000;	
-//	int canarretepas = 12;	
+	int canarretepas = 12;	
 
-//	ft_printf("here take some string %-177i does this work? %-10i how bout one more? %-12i and finally %i", i, unautrei, encoreunautrei, canarretepas); 
-	ft_printf("here take some string %-177i does this work? %-10i", i, unautrei); 
+	char *soyonsfous = "this is a strong string";
+
+	ft_printf("here take some string %-177i does this work? %-10i how bout one more? %-12i and finally %i why stop there? %-12s", i, unautrei, encoreunautrei, canarretepas, soyonsfous); 
+//	ft_printf("w? %-12s", soyonsfous); 
+//	ft_printf("here take some string %-177i does this work? %-10i", i, encoreunautrei); 
 //	ft_printf("here take some string %-i does this work? %-i %-i", i, unautrei, encoreunautrei); 
 
 
