@@ -7,19 +7,30 @@ struct	fandf
 	char *flags;
 	int width;
 	char type;
+	int lenflags;
 };
 
-struct fandf innit_struct()
+void innit_struct(struct fandf *info)
 {
-	struct fandf info;
 
-	info.flags = NULL ;
-	info.width = 0;
-	info.type = 0;
+	info->flags = NULL ;
+	info->width = 0;
+	info->type = 0;
+	info->lenflags = 0;
 
-	return info;
 }
 
+
+int	ft_lenflags(const char *str)
+{
+	int i;
+
+	i = 0;
+
+	while (str[i] != ' ' && str[i])
+		i++;
+	return i;
+}
 
 char	*ft_appendchar(char const *s1, char const s2)
 {
@@ -57,6 +68,7 @@ struct fandf	*fill(const char *str, struct fandf *info)
 	int i;
 	i = 1;
 
+	info->lenflags = ft_lenflags(&str[i]) + 1;
 	while (isflag(str[i]))
 			info->flags = ft_appendchar(info->flags, str[i++]);
 	if (ft_isdigit(str[i]))
@@ -65,6 +77,7 @@ struct fandf	*fill(const char *str, struct fandf *info)
 		i++;
 	if(ft_istype(str[i]))
 		info->type = str[i];
+
 
 
 
@@ -91,24 +104,33 @@ int ft_printf(const char *formatstring, ...)
 	struct fandf *info;
 	int i;
 
-	*info = innit_struct();
 	va_start(ap, formatstring);
-	while (formatstring[i] != '%' && formatstring[i])
-		ft_putchar(formatstring[i++]);
-	info = fill(&formatstring[i], info);
-	ft_convertme(ap, info);
-
+	while (formatstring[i])
+	{
+		if (formatstring[i] != '%')
+			ft_putchar(formatstring[i++]);
+		else
+		{
+			innit_struct(info);
+			fill(&formatstring[i], info);
+			ft_convertme(ap, info);
+			i = i + info->lenflags;
+		}
+	}
 	return 0;
 }
-
-
 
 int main()
 {
 	int i = 1000;
-	int unautrei = 2000;	
+	int unautrei = 2000;
+	int encoreunautrei = 30000;	
+//	int canarretepas = 12;	
 
-	ft_printf("here take some string %-177i %-10i", i, unautrei); 
+//	ft_printf("here take some string %-177i does this work? %-10i how bout one more? %-12i and finally %i", i, unautrei, encoreunautrei, canarretepas); 
+	ft_printf("here take some string %-177i does this work? %-10i", i, unautrei); 
+//	ft_printf("here take some string %-i does this work? %-i %-i", i, unautrei, encoreunautrei); 
+
 
 	return 0;
 }
