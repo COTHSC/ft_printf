@@ -1,14 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jescully <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/01/21 09:34:23 by jescully          #+#    #+#             */
+/*   Updated: 2021/01/21 16:32:15 by jescully         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdarg.h>
 #include "libft/libft.h"
-struct	fandf
-{
-	char *flags;
-	int width;
-	char type;
-	int lenflags;
-};
 
 struct fandf *innit_struct()
 {
@@ -19,52 +24,10 @@ struct fandf *innit_struct()
 	info->flags = NULL ;
 	info->width = 0;
 	info->type = 0;
+	info->precision = 1;
 	info->lenflags = 0;
 	return info;
 
-}
-
-
-int	ft_lenflags(const char *str)
-{
-	int i;
-
-	i = 0;
-
-	while (str[i] != ' ' && str[i])
-		i++;
-	return i;
-}
-
-char	*ft_appendchar(char const *s1, char const s2)
-{
-	int		size;
-	char	*retstr;
-	int		i;
-	int		c;
-
-	i = 0;
-	c = 0;
-
-	if (!s1)
-	{
-		retstr = (char*)malloc(sizeof(retstr) * 2);
-		retstr[0] = s2;
-		retstr[1] = '\0';
-		return retstr;
-	}
-	else
-		size = ft_strlen(s1) + 1;
-	if (!(retstr = (char*)malloc(sizeof(retstr) * (size + 1))))
-		return (NULL);
-	while (s1[i])
-	{
-		retstr[i] = s1[i];
-		i++;
-	}
-	retstr[i++] = s2;
-	retstr[i] = '\0';
-	return (retstr);
 }
 
 struct fandf	*fill(const char *str, struct fandf *info)
@@ -79,28 +42,66 @@ struct fandf	*fill(const char *str, struct fandf *info)
 		info->width = ft_atoi(&str[i]);
 	while(ft_isdigit(str[i]))
 		i++;
+	if (str[i] == '.')
+		info->precision = ft_atoi(&str[++i]);
+	while (ft_isdigit(str[i]))
+		i++;
 	if(ft_istype(str[i]))
 		info->type = str[i];
-
-
-
 
 //	printf("this is whats in my struct: %s \n", info->flags);
 //	printf("this is whats in my struct: %i \n", info->width);
 //	printf("this is whats in my struct: %c \n", info->type);
-return (info);
+	printf("this is whats in my struct: %i \n", info->precision);
+	return (info);
 }
+
+char *ft_padme(struct fandf *info, char *str)
+{
+	int i;
+	int counter;
+	int leftovers;
+	char *pad;
+	char *newstr;
+	
+	counter = 0;
+	i = ft_strlen(str);
+	leftovers = info->width - i;
+	if (leftovers > 0)
+	{
+		if (!(pad = malloc(leftovers + 1)))
+				return 0;
+		while (counter < leftovers)
+			pad[counter++] = ' ';
+		pad[counter] = '\0';
+		if (ft_strchr(info->flags, '-'))
+			newstr = ft_strjoin(str, pad);
+		else
+			newstr = ft_strjoin(pad, str);
+	}
+	else
+		newstr = ft_strdup(str);
+	return (newstr);
+}
+
+
+
 
 int	ft_convertme(va_list ap, struct fandf *info)
 {
-	if (info->type == 'i')
-		ft_putstr(ft_itoa(va_arg(ap, int)));
-	if (info->type == 's')
-		ft_putstr(va_arg(ap, char *));
+	char *str;
 
+	if (info->type == 'i')
+		str = ft_itoa(va_arg(ap, int));
+	else if (info->type == 's')
+		str = va_arg(ap, char *);
+	else if (info->type == 'f')
+		str = ft_ftoa(va_arg(ap, double));
+	str = ft_padme(info, str);
+	ft_putstr(str);
+	free(str);
 	return 1;
 }
-
 
 int ft_printf(const char *formatstring, ...)
 {
@@ -108,6 +109,7 @@ int ft_printf(const char *formatstring, ...)
 	struct fandf *info;
 	int i;
 
+	i  = 0;
 	va_start(ap, formatstring);
 	while (formatstring[i])
 	{
@@ -124,20 +126,3 @@ int ft_printf(const char *formatstring, ...)
 	return 0;
 }
 
-int main()
-{
-	int i = 1000;
-	int unautrei = 2000;
-	int encoreunautrei = 30000;	
-	int canarretepas = 12;	
-
-	char *soyonsfous = "this is a strong string";
-
-	ft_printf("here take some string %-177i does this work? %-10i how bout one more? %-12i and finally %i why stop there? %-12s", i, unautrei, encoreunautrei, canarretepas, soyonsfous); 
-//	ft_printf("w? %-12s", soyonsfous); 
-//	ft_printf("here take some string %-177i does this work? %-10i", i, encoreunautrei); 
-//	ft_printf("here take some string %-i does this work? %-i %-i", i, unautrei, encoreunautrei); 
-
-
-	return 0;
-}
