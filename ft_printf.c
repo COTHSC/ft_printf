@@ -6,7 +6,7 @@
 /*   By: jescully <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 09:34:23 by jescully          #+#    #+#             */
-/*   Updated: 2021/01/21 16:32:15 by jescully         ###   ########.fr       */
+/*   Updated: 2021/01/21 17:00:02 by jescully         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,34 @@ struct fandf	*fill(const char *str, struct fandf *info)
 	return (info);
 }
 
+char	*ft_preciseme(struct fandf *info, char *str)
+{
+	int leftovers;
+	int i;
+	int counter;
+	char *pad;
+	char *newstr;
+
+	counter = 0;
+	i = ft_strlen(str);
+	leftovers = info->precision - i;
+
+  	if (leftovers > 0)
+    {
+        if (!(pad = malloc(leftovers + 1)))
+                return 0;
+        while (counter < leftovers)
+            pad[counter++] = '0';
+
+        pad[counter] = '\0';
+        newstr = ft_strjoin(pad, str);
+    }
+    else
+		newstr = ft_strdup(str);
+    return (newstr);
+}
+
+
 char *ft_padme(struct fandf *info, char *str)
 {
 	int i;
@@ -65,6 +93,7 @@ char *ft_padme(struct fandf *info, char *str)
 	char *newstr;
 	
 	counter = 0;
+	str = ft_preciseme(info, str);
 	i = ft_strlen(str);
 	leftovers = info->width - i;
 	if (leftovers > 0)

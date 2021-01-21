@@ -31,18 +31,18 @@ int main()
     ft_printf("w %-33i \n", i);
     ft_printf("w %-15i \n", i);
     ft_printf("w %-5i \n", i);*/
-	ft_printf("w %3.522i \n", i);
-   /* printf("w %3.1f \n", dec);
-    printf("w %3.0f \n", dec);
-    printf("w %3.12f \n", dec);
-    printf("w %3.4f \n", dec);
+	ft_printf("w %53.52i \n", i);
+    printf("w %.1i \n", i);
+    printf("w %.0i \n", i);
+    printf("w %012.12i \n", i);
+    printf("w %3.4i \n", i);
     printf("w %15i \n", i);
     printf("w %5i \n", i);   
    	printf("w %-5i \n", i);
     printf("w %-25i \n", i);
     printf("w %-33i \n", i);
     printf("w %-15i \n", i);
-    printf("w %-5i \n", i);*/
+    printf("w %-5i \n", i);
 
 
 //    ft_printf("here take some string %-177i does this work? %-10i \n", i, encoreunautrei);
