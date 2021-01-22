@@ -6,7 +6,7 @@
 /*   By: jescully <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 08:32:13 by jescully          #+#    #+#             */
-/*   Updated: 2021/01/22 08:56:31 by jescully         ###   ########.fr       */
+/*   Updated: 2021/01/22 09:24:29 by jescully         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,14 @@ int main()
 
 	int ft;
 	int real;
-	ft = ft_printf("w %.*i \n",  iquatorze, i);
-	ft = printf("w %.*i \n",  iquatorze, i);
+	
+	ft_printf("w %0.*i %.*i %2i \n", 12, i,  iquatorze, i, i);
+	printf("w %0.*i %.*i %2i \n", 12, i,  iquatorze, i, i);
+
+//	printf("this is the middle \n");
+
 	ft = ft_printf("w %015i %017.15i %020i %.*i \n", i, i, i, 12, i);
-    real = printf("w %015i %017.15i %020i %.*i \n", i, i, i, 12 ,i);
+	ft = printf("w %015i %017.15i %020i %.*i \n", i, i, i, 12, i);
 
 	printf("chars printed from ft: %i\n", ft);
 	printf("chars printed from tf: %i\n", real);
