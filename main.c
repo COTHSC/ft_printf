@@ -6,7 +6,7 @@
 /*   By: jescully <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 08:32:13 by jescully          #+#    #+#             */
-/*   Updated: 2021/01/22 13:14:02 by jescully         ###   ########.fr       */
+/*   Updated: 2021/01/22 14:37:30 by jescully         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,14 @@ int main()
 	char *strf;
 	int iquatorze = -12;
 	int ecapartenexa = 0xff;
+	int ecapartenexamaisnegatif = -0xff;
 
 	int ft;
 	int real;
 	
+	ft_printf("%x\n", ecapartenexamaisnegatif);
+	printf("%x\n", ecapartenexamaisnegatif);
+
 	ft_printf("%x\n", ecapartenexa);
 	printf("%x\n", ecapartenexa);
 	ft_printf("%X\n", ecapartenexa);
