@@ -6,7 +6,7 @@
 /*   By: jescully <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 09:34:23 by jescully          #+#    #+#             */
-/*   Updated: 2021/01/22 09:16:27 by jescully         ###   ########.fr       */
+/*   Updated: 2021/01/22 13:12:14 by jescully         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,11 @@ int	ft_convertme(va_list ap, struct fandf *info)
 		str = va_arg(ap, char *);
 	else if (info->type == 'f')
 		str = ft_ftoa(va_arg(ap, double));
+	else if (info->type == 'x')
+		str = ft_xtoa(va_arg(ap, unsigned int));
+	else if (info->type == 'X')
+		str = ft_Xtoa(va_arg(ap, unsigned int));
+
 	str = ft_padme(info, str);
 	info->lenprint += ft_strlen(str);
 	ft_putstr(str);

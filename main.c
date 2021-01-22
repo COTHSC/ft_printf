@@ -6,7 +6,7 @@
 /*   By: jescully <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 08:32:13 by jescully          #+#    #+#             */
-/*   Updated: 2021/01/22 09:24:29 by jescully         ###   ########.fr       */
+/*   Updated: 2021/01/22 13:14:02 by jescully         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,28 +27,42 @@ int main()
     char *soyonsfous = "this is a strong string";
 	char *strf;
 	int iquatorze = -12;
+	int ecapartenexa = 0xff;
 
 	int ft;
 	int real;
 	
-	ft_printf("w %0.*i %.*i %2i \n", 12, i,  iquatorze, i, i);
+	ft_printf("%x\n", ecapartenexa);
+	printf("%x\n", ecapartenexa);
+	ft_printf("%X\n", ecapartenexa);
+	printf("%X\n", ecapartenexa);
+	ft_printf("%i\n", i);
+	printf("%i \n", i);
+	ft_printf("w %0.*i %.*i %2i\n", 12, i,  iquatorze, i, i);
 	printf("w %0.*i %.*i %2i \n", 12, i,  iquatorze, i, i);
 
-//	printf("this is the middle \n");
-
 	ft = ft_printf("w %015i %017.15i %020i %.*i \n", i, i, i, 12, i);
-	ft = printf("w %015i %017.15i %020i %.*i \n", i, i, i, 12, i);
+	real = printf("w %015i %017.15i %020i %.*i \n", i, i, i, 12, i);
 
 	printf("chars printed from ft: %i\n", ft);
 	printf("chars printed from tf: %i\n", real);
-// 	printf("w %3.4i \n", i);
-//    printf("w %15i \n", i);
-//    printf("w %5i \n", i);   
-//   	printf("w %-5i \n", i);
-//    printf("w %-25i \n", i);
-//    printf("w %-33i \n", i);
-//    printf("w %-15i \n", i);
-//    printf("w %-5i \n", i);
+
+ 	ft_printf("w %3.4i \n", i);
+ 	printf("w %3.4i \n", i);
+ 	ft_printf("w %15i \n", i);
+ 	printf("w %15i \n", i);
+	ft_printf("w %5i \n", i);   
+	printf("w %5i \n", i);   
+	ft_printf("w %-5i \n", i);
+	printf("w %-5i \n", i);
+	ft_printf("w %-25i \n", i);
+	printf("w %-25i \n", i);
+	ft_printf("w %-33i \n", i);
+	printf("w %-33i \n", i);
+	ft_printf("w %-15i \n", i);
+	printf("w %-15i \n", i);
+	ft_printf("w %-5i \n", i);
+	printf("w %-5i \n", i);
 
 
 
