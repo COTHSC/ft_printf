@@ -6,7 +6,7 @@
 /*   By: jescully <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 09:34:23 by jescully          #+#    #+#             */
-/*   Updated: 2021/01/22 13:12:14 by jescully         ###   ########.fr       */
+/*   Updated: 2021/01/25 09:21:56 by jescully         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,6 @@ struct fandf	*fill(const char *str, struct fandf *info, va_list ap)
 		i++;
 	if(ft_istype(str[i]))
 		info->type = str[i];
-
-//	printf("this is whats in my struct: %s \n", info->flags);
-//	printf("this is whats in my struct: %i \n", info->width);
-//	printf("this is whats in my struct: %c \n", info->type);
-//	printf("this is whats in my struct: %i \n", info->precision);
 	return (info);
 }
 
@@ -79,7 +74,11 @@ char	*ft_preciseme(struct fandf *info, char *str)
 	counter = 0;
 	i = ft_strlen(str);
 	leftovers = info->precision - i;
-
+	if (info->precision == 0)
+	{
+		newstr = "";
+		return newstr;
+	}
   	if (leftovers > 0)
     {
         if (!(pad = malloc(leftovers + 1)))
@@ -125,9 +124,6 @@ char *ft_padme(struct fandf *info, char *str)
 	return (newstr);
 }
 
-
-
-
 int	ft_convertme(va_list ap, struct fandf *info)
 {
 	char *str;
@@ -163,15 +159,13 @@ int ft_printf(const char *formatstring, ...)
 	while (formatstring[i])
 	{
 		if (formatstring[i] != '%')
-		{
 			ft_putchar(formatstring[i++]);
-		}
 		else
 		{
 			info = innit_struct(sticky);
 			fill(&formatstring[i], info, ap);
 			ft_convertme(ap, info);
-			i = i + info->lenflags;
+			i += info->lenflags;
 			info->lenprint -= info->lenflags;
 			sticky = info->lenprint;
 		}
