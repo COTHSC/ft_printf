@@ -6,14 +6,14 @@
 /*   By: jescully <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 09:34:23 by jescully          #+#    #+#             */
-/*   Updated: 2021/01/25 09:21:56 by jescully         ###   ########.fr       */
+/*   Updated: 2021/01/25 14:28:42 by jescully         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdio.h>
 #include <stdarg.h>
 #include "libft/libft.h"
+#include "ft_printf.h"
 
 struct fandf *innit_struct(int sticky)
 {
@@ -38,12 +38,23 @@ struct fandf	*fill(const char *str, struct fandf *info, va_list ap)
 	i = 1;
 
 	info->lenflags = ft_lenflags(&str[i]) + 1;
+
 	while (isflag(str[i]))
 			info->flags = ft_appendchar(info->flags, str[i++]);
-	if (ft_isdigit(str[i]))
-		info->width = ft_atoi(&str[i]);
-	if (str[i] == '0' && !ft_strnchr(str, '.', info->lenflags))
+	
+	if (ft_strchr(info->flags, '0') && !ft_strnchr(str, '.', info->lenflags))
 		info->filler = '0';
+
+	if (ft_isdigit(str[i]) || str[i] == '*')
+	{
+		if (str[i] == '*')
+		{
+			info->width = va_arg(ap, int);
+			i += 1;
+		}
+		else 
+			info->width = ft_atoi(&str[i]);
+	}
 	while(ft_isdigit(str[i]))
 		i++;
 	if (str[i] == '.')
@@ -60,6 +71,10 @@ struct fandf	*fill(const char *str, struct fandf *info, va_list ap)
 		i++;
 	if(ft_istype(str[i]))
 		info->type = str[i];
+	else
+	{
+		info->lenflags = 1;
+	}
 	return (info);
 }
 
@@ -71,10 +86,12 @@ char	*ft_preciseme(struct fandf *info, char *str)
 	char *pad;
 	char *newstr;
 
+	if (!str)
+		return NULL;
 	counter = 0;
 	i = ft_strlen(str);
 	leftovers = info->precision - i;
-	if (info->precision == 0)
+	if (info->type == 0 || (info->precision == 0 && str[0] == '0' ))
 	{
 		newstr = "";
 		return newstr;
@@ -128,16 +145,22 @@ int	ft_convertme(va_list ap, struct fandf *info)
 {
 	char *str;
 
-	if (info->type == 'i')
+	if (info->type == 'i' || info->type == 'd')
 		str = ft_itoa(va_arg(ap, int));
+	else if (info->type == 'u')
+		str = ft_uitoa(va_arg(ap, unsigned int));
+	else if (info->type == 'c')
+		str = ft_chartostr(va_arg(ap, int));
 	else if (info->type == 's')
 		str = va_arg(ap, char *);
-	else if (info->type == 'f')
-		str = ft_ftoa(va_arg(ap, double));
+//	else if (info->type == 'f')
+//		str = ft_ftoa(va_arg(ap, double));
 	else if (info->type == 'x')
 		str = ft_xtoa(va_arg(ap, unsigned int));
 	else if (info->type == 'X')
 		str = ft_Xtoa(va_arg(ap, unsigned int));
+	else
+		str = "";
 
 	str = ft_padme(info, str);
 	info->lenprint += ft_strlen(str);
@@ -156,6 +179,7 @@ int ft_printf(const char *formatstring, ...)
 	sticky = 0;
 	i  = 0;
 	va_start(ap, formatstring);
+	info = innit_struct(0);
 	while (formatstring[i])
 	{
 		if (formatstring[i] != '%')
@@ -166,7 +190,7 @@ int ft_printf(const char *formatstring, ...)
 			fill(&formatstring[i], info, ap);
 			ft_convertme(ap, info);
 			i += info->lenflags;
-			info->lenprint -= info->lenflags;
+			info->lenprint -= (info->lenflags);
 			sticky = info->lenprint;
 		}
 	}
