@@ -6,7 +6,7 @@
 /*   By: jescully <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 08:32:13 by jescully          #+#    #+#             */
-/*   Updated: 2021/01/25 14:17:18 by jescully         ###   ########.fr       */
+/*   Updated: 2021/01/25 16:56:17 by jescully         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int ft_printf(const char *formatstring, ...);
 
 int main()
 {
-    int i = 0;
     int ii = 1;
    // int unautrei = 2000;
   //  int encoreunautrei = 30000;
@@ -33,14 +32,35 @@ int main()
 	int ecapartenexa = 0xff;
 	int ecapartenexamaisnegatif = -0xff;
 	char *pointer;
-	char c = 'c';
 	int ft;
 	int real;
 
+    int     a = -4;
+    int     b = 0;
+    char    c = 'a';
+    int     d = 2147483647;
+    int     e = -2147483648;
+    int     f = 42;
+    int     g = 25;
+    int     h = 4200;
+    int     i = 8;
+    int     j = -12;
+    int     k = 123456789;
+    int     l = 0;
+    int     m = -12345678;
+    char    *n = "abcdefghijklmnop";
+    char    *o = "-a";
+    char    *p = "-12";
+    char    *q = "0";
+    char    *r = "%%";
+    char    *s = "-2147483648";
+    char    *t = "0x12345678";
+    char    *u = "-0";
 
 	pointer = &c;
-	
-	ft = ft_printf("w %015i %017.15i %020i %.*i \n", i, i, i, 12, i);
+ft_printf("*u-d%%0*d%-12s0*@", h, "bada", r, p, r, r, i, r, i, r, i); 	
+ 
+ ft = ft_printf("w %015i %017.15i %020i %.*i \n", i, i, i, 12, i);
  	ft_printf("%*i, %*d, %*d, %*d \n", ii, ii, ii, ii, ii, ii, ii ,ii );
  	ft_printf("w %0.0i \n", ii);
 	ft_printf("%c \n", 'n');
