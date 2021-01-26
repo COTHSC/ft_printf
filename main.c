@@ -6,7 +6,7 @@
 /*   By: jescully <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 08:32:13 by jescully          #+#    #+#             */
-/*   Updated: 2021/01/25 16:56:17 by jescully         ###   ########.fr       */
+/*   Updated: 2021/01/26 17:17:22 by jescully         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,47 @@ int main()
     char    *t = "0x12345678";
     char    *u = "-0";
 
+	a = 5;
+	b = 0;
+	ft_printf("%0*.*i, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d", a, b, i, a, b, j, a, b, k, a, b, l, a, b, m, a, b, c, a, b, e, a, b, d);
+
+	printf("\n");
+	printf("%0*.*i, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d", a, b, i, a, b, j, a, b, k, a, b, l, a, b, m, a, b, c, a, b, e, a, b, d);
+		printf("\n");
+	//ft_printf("%4i, %4d, %4d, %4d, %4d, %4d, %4d, %4d", i, j, k, l, m, c, e, d);
+	printf("\n");
+ft_printf("%0*i, %0*d, %0*d, %0*d, %0*d, %0*d, %0*d, %0*d", a, i, a, j, a, k, a, l, a, m, a, c, a, e, a, d);
+	printf("\n");
+//	printf("%4i, %4d, %4d, %4d, %4d, %4d, %4d, %4d", i, j, k, l, m, c, e, d);
+ printf("%0*i, %0*d, %0*d, %0*d, %0*d, %0*d, %0*d, %0*d", a, i, a, j, a, k, a, l, a, m, a, c, a, e, a, d);
+
+	printf("\n");
+	ft_printf("%.*i, %.*d, %.*d, %.*d, %.*d, %.*d, %.*d, %.*d", a, i, a, j, a, k, a, l, a, m, a, c, a, e, a, d);
+	printf("\n");
+	printf("%.*i, %.*d, %.*d, %.*d, %.*d, %.*d, %.*d, %.*d", a, i, a, j, a, k, a, l, a, m, a, c, a, e, a, d);
+	printf("\n");
+	ft_printf("%*i, %*d, %*d, %*d, %*d, %*d, %*d, %*d",a, i, a, j, a, k, a, l, a, m, a, c, a, e, a, d);
+	printf("\n");
+	printf("%*i, %*d, %*d, %*d, %*d, %*d, %*d, %*d",a, i, a, j, a, k, a, l, a, m, a, c, a, e, a, d);
+	printf("\n");
+	/*	printf("%-12s0*@ \n", "bada"); 
+		ft_printf("%-12s0*@ \n", "bada"); 
+
+	
+	
+	
+	printf("%%%dbada%s%%**%s**-d%%0*d%-12s0*@", h, "bada", r, p, r, r, i, r, i, r, i); 
+	printf("\n");
+	ft_printf("%%%dbada%s%%**%s**-d%%0*d%-12s0*@", h, "bada", r, p, r, r, i, r, i, r, i); 
+	printf("\n");
+	
+
 	pointer = &c;
-ft_printf("*u-d%%0*d%-12s0*@", h, "bada", r, p, r, r, i, r, i, r, i); 	
- 
  ft = ft_printf("w %015i %017.15i %020i %.*i \n", i, i, i, 12, i);
+ ft = printf("w %015i %017.15i %020i %.*i \n", i, i, i, 12, i);
  	ft_printf("%*i, %*d, %*d, %*d \n", ii, ii, ii, ii, ii, ii, ii ,ii );
+ 	printf("%*i, %*d, %*d, %*d \n", ii, ii, ii, ii, ii, ii, ii ,ii );
+
  	ft_printf("w %0.0i \n", ii);
 	ft_printf("%c \n", 'n');
 	ft = ft_printf("this is a string \n");
@@ -130,7 +166,7 @@ ft_printf("*u-d%%0*d%-12s0*@", h, "bada", r, p, r, r, i, r, i, r, i);
 	printf("w %-5i \n", i);
 
 
-
+*/
 
     return 0;
 }
