@@ -6,7 +6,7 @@
 #    By: jescully <jescully@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/18 09:50:54 by jescully          #+#    #+#              #
-#    Updated: 2021/01/25 12:42:28 by jescully         ###   ########.fr        #
+#    Updated: 2021/01/27 10:10:45 by jescully         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,15 +50,15 @@ SRC = libft/ft_atoi.c \
 		libft/ft_putchar_fd.c \
 		libft/ft_strmapi.c \
 		libft/ft_tolower.c \
-		libft/ft_isflag.c \
+		utils/ft_isflag.c \
 		libft/ft_istype.c \
-		libft/ft_appendchar.c \
-		libft/ft_strnchr.c \
+		utils/ft_appendchar.c \
+		utils/ft_strnchr.c \
 		ft_printf.c \
-		libft/ft_putstr.c \
+		utils/ft_putstr.c \
 		libft/ft_chartostr.c \
-		libft/ft_xtoa.c \
-		libft/ft_lenflags.c \
+		utils/ft_xtoa.c \
+		utils/ft_lenflags.c \
 		ft_printf.c \
 
 BONSRC = 	libft/ft_lstsize.c \
