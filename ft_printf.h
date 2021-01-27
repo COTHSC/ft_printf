@@ -6,7 +6,7 @@
 /*   By: jescully <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 09:47:48 by jescully          #+#    #+#             */
-/*   Updated: 2021/01/27 10:36:34 by jescully         ###   ########.fr       */
+/*   Updated: 2021/01/27 10:46:19 by jescully         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,6 @@ char    		*ft_appendchar(char const *s1, char const s2);
 char    		*ft_strnchr(const char *s, int c, int range);
 char        	*ft_Xtoa(unsigned int n);
 char        	*ft_xtoa(unsigned int n);
+char        	*ft_uitoa(unsigned int n);
 char            *ft_chartostr(char c);
 #endif
