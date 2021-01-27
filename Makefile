@@ -6,7 +6,7 @@
 #    By: jescully <jescully@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/18 09:50:54 by jescully          #+#    #+#              #
-#    Updated: 2021/01/27 10:10:45 by jescully         ###   ########.fr        #
+#    Updated: 2021/01/27 10:23:30 by jescully         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,12 +51,12 @@ SRC = libft/ft_atoi.c \
 		libft/ft_strmapi.c \
 		libft/ft_tolower.c \
 		utils/ft_isflag.c \
-		libft/ft_istype.c \
+		utils/ft_istype.c \
 		utils/ft_appendchar.c \
 		utils/ft_strnchr.c \
 		ft_printf.c \
 		utils/ft_putstr.c \
-		libft/ft_chartostr.c \
+		utils/ft_chartostr.c \
 		utils/ft_xtoa.c \
 		utils/ft_lenflags.c \
 		ft_printf.c \
