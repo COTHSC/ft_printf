@@ -6,11 +6,11 @@
 /*   By: jescully <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 12:32:26 by jescully          #+#    #+#             */
-/*   Updated: 2021/01/25 12:41:00 by jescully         ###   ########.fr       */
+/*   Updated: 2021/01/27 10:33:01 by jescully         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft/libft.h"
 
 char	*ft_chartostr(char c)
 {
