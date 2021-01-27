@@ -6,7 +6,7 @@
 /*   By: jescully <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 08:32:13 by jescully          #+#    #+#             */
-/*   Updated: 2021/01/26 17:17:22 by jescully         ###   ########.fr       */
+/*   Updated: 2021/01/27 15:37:41 by jescully         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,20 @@ int main()
     char    *t = "0x12345678";
     char    *u = "-0";
 
-	a = 5;
-	b = 0;
-	ft_printf("%0*.*i, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d", a, b, i, a, b, j, a, b, k, a, b, l, a, b, m, a, b, c, a, b, e, a, b, d);
+	a = 0;
+	b = -2;
+
+ft = ft_printf("%5c", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0);
+	printf("\n");
+real = printf("%5c", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0);
+//real =	printf("%%%d", h, "bada", r, p, r, r, i, r, i, r, i);
+//ft_printf("%.s, %.s, %.s, %.s, %.s", n, n, n, n, n);
+	printf("\n");
+	printf("this is the fake deal %d" , ft);
+//  printf("%.s, %.s, %.s, %.s, %.s", n, n, n, n, n);
+	printf("\n");
+	printf("this is the real deal %d" , real);
+/*	ft_printf("%0*.*i, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d", a, b, i, a, b, j, a, b, k, a, b, l, a, b, m, a, b, c, a, b, e, a, b, d);
 
 	printf("\n");
 	printf("%0*.*i, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d", a, b, i, a, b, j, a, b, k, a, b, l, a, b, m, a, b, c, a, b, e, a, b, d);

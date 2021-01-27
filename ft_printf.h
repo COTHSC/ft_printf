@@ -6,7 +6,7 @@
 /*   By: jescully <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 09:47:48 by jescully          #+#    #+#             */
-/*   Updated: 2021/01/27 10:46:19 by jescully         ###   ########.fr       */
+/*   Updated: 2021/01/27 12:09:26 by jescully         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ struct  fandf
     int lenflags;
 	int lenprint;
 	int negint;
+	int prenada;
 };
 
 int ft_printf(const char *formatstring, ...);
