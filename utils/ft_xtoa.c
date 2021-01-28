@@ -6,11 +6,12 @@
 /*   By: jescully <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 10:00:29 by jescully          #+#    #+#             */
-/*   Updated: 2021/01/27 10:12:22 by jescully         ###   ########.fr       */
+/*   Updated: 2021/01/28 09:51:34 by jescully         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
+#include "../ft_printf.h"
 
 static int  xlength(long long int number)
 {
@@ -31,10 +32,10 @@ static int  xlength(long long int number)
 }
 
 
-char        *ft_xtoa(unsigned int n)
+char        *ft_xtoa(uintptr_t n)
 {
     char            *ret;
-    unsigned int    nb;
+    uintptr_t    nb;
     int             len;
 	char *hex = "0123456789abcdef";
 

@@ -6,7 +6,7 @@
 /*   By: jescully <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 08:32:13 by jescully          #+#    #+#             */
-/*   Updated: 2021/01/27 15:37:41 by jescully         ###   ########.fr       */
+/*   Updated: 2021/01/28 12:08:45 by jescully         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,19 +50,24 @@ int main()
     int     m = -12345678;
     char    *n = "abcdefghijklmnop";
     char    *o = "-a";
-    char    *p = "-12";
+    char    *p = "ah";
     char    *q = "0";
     char    *r = "%%";
-    char    *s = "-2147483648";
+    char    *s = NULL;
     char    *t = "0x12345678";
     char    *u = "-0";
 
 	a = 0;
 	b = -2;
-
-ft = ft_printf("%5c", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0);
+ft = ft_printf("-->|%-16.p|<--\n", p);
 	printf("\n");
-real = printf("%5c", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0);
+real = printf("-->|%-16.p|<--\n", p);
+	printf("\n");
+
+
+//ft = ft_printf("%5c", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0);
+	printf("\n");
+//real = printf("%5c", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0);
 //real =	printf("%%%d", h, "bada", r, p, r, r, i, r, i, r, i);
 //ft_printf("%.s, %.s, %.s, %.s, %.s", n, n, n, n, n);
 	printf("\n");

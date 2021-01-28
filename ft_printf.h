@@ -6,7 +6,7 @@
 /*   By: jescully <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 09:47:48 by jescully          #+#    #+#             */
-/*   Updated: 2021/01/27 12:09:26 by jescully         ###   ########.fr       */
+/*   Updated: 2021/01/28 17:02:13 by jescully         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdint.h>
 
 struct  fandf
 {
@@ -27,6 +28,7 @@ struct  fandf
 	int lenprint;
 	int negint;
 	int prenada;
+	int printnull;
 };
 
 int ft_printf(const char *formatstring, ...);
@@ -38,7 +40,7 @@ int 			ft_lenflags(const char *str);
 char    		*ft_appendchar(char const *s1, char const s2);
 char    		*ft_strnchr(const char *s, int c, int range);
 char        	*ft_Xtoa(unsigned int n);
-char        	*ft_xtoa(unsigned int n);
+char        	*ft_xtoa(uintptr_t n);
 char        	*ft_uitoa(unsigned int n);
-char            *ft_chartostr(char c);
+char            *ft_chartostr(char c, struct fandf *info);
 #endif
