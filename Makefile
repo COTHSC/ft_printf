@@ -6,7 +6,7 @@
 #    By: jescully <jescully@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/18 09:50:54 by jescully          #+#    #+#              #
-#    Updated: 2021/01/27 10:44:54 by jescully         ###   ########.fr        #
+#    Updated: 2021/01/29 09:50:00 by jescully         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,6 +60,14 @@ SRC = libft/ft_atoi.c \
 		utils/ft_xtoa.c \
 		utils/ft_uitoa.c \
 		utils/ft_lenflags.c \
+		utils/fill_prec.c \
+		utils/fill_width.c \
+		utils/ft_padme.c \
+		utils/ft_paddit.c \
+		utils/ft_preciseme.c \
+		utils/ft_padme.c \
+		utils/innit_struct.c \
+		utils/intconvert.c \
 		ft_printf.c \
 
 BONSRC = 	libft/ft_lstsize.c \

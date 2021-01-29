@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_chartostr.c                                     :+:      :+:    :+:   */
+/*   fill_width.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jescully <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/25 12:32:26 by jescully          #+#    #+#             */
-/*   Updated: 2021/01/29 10:54:50 by jescully         ###   ########.fr       */
+/*   Created: 2021/01/29 09:24:46 by jescully          #+#    #+#             */
+/*   Updated: 2021/01/29 10:48:19 by jescully         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
 #include "../ft_printf.h"
 
-char	*ft_chartostr(char c, t_fandf *info)
+int	fill_width(t_fandf *info, va_list ap, int i, const char *str)
 {
-	char *str;
-
-	if (!(str = (char *)malloc(2)))
-		return (NULL);
-	str[0] = c;
-	str[1] = '\0';
-	if (str[0] == '\0')
+	if (str[i] == '*')
 	{
-		info->printn++;
-		info->lenprint++;
+		info->width = va_arg(ap, int);
+		if (info->width < 0)
+		{
+			info->width = -1 * info->width;
+			info->flags = ft_appendchar(info->flags, '-');
+		}
+		i++;
 	}
-	return (str);
+	else if (ft_isdigit(str[i]))
+		info->width = ft_atoi(&str[i]);
+	while (ft_isdigit(str[i]))
+		i++;
+	return (i);
 }
