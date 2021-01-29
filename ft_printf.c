@@ -6,7 +6,7 @@
 /*   By: jescully <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 09:34:23 by jescully          #+#    #+#             */
-/*   Updated: 2021/01/29 10:59:34 by jescully         ###   ########.fr       */
+/*   Updated: 2021/01/29 14:53:02 by jescully         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ char				*ft_convertme(va_list ap, t_fandf *info)
 	else if (info->type == 'X')
 		str = ft_gxtoa(va_arg(ap, unsigned int));
 	else if (info->type == 'p')
-		str = ft_strjoin("0x", ft_xtoa(va_arg(ap, uintptr_t)));
+		str = ft_xtoa(va_arg(ap, uintptr_t));
 	else
 		str = ft_chartostr(info->type, info);
 	printme(str, info);
@@ -68,8 +68,6 @@ char				*ft_convertme(va_list ap, t_fandf *info)
 
 int					printme(char *str, t_fandf *info)
 {
-	if (!ft_strncmp("0x0", str, 3) && info->prenada && info->type == 'p')
-		str = "0x";
 	str = ft_padme(info, str);
 	info->lenprint += ft_strlen(str);
 	if (info->type == 'c' && info->printn == 1 && ft_strchr(info->flags, '-'))
@@ -86,14 +84,15 @@ int					args(t_fandf *info, const char *fs, int i, va_list ap)
 	fill(&fs[i], info, ap);
 	ft_convertme(ap, info);
 	if (info->type != '%')
+	{
 		i += info->lenflags;
+		info->lenprint -= (info->lenflags);
+	}
 	else
 	{
-		i += 2;
-		info->lenprint -= 2;
+		i += info->lenflags;
+		info->lenprint -= info->lenflags;
 	}
-	if (info->type != '%')
-		info->lenprint -= (info->lenflags);
 	return (i);
 }
 
